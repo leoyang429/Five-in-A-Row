@@ -1,3 +1,4 @@
 - **11/20/19** Designed the game board and added sound tracks
   - Enabled players to click on the board to make moves
+  - Could evaluate the board (who wins)
   - Still need some decoration
