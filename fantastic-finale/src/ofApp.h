@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofUtils.h"
+#include "ofSystemUtils.h"
+
 #include "ofxButtons.h"
 #include "ofxNotifications.h"
 
@@ -25,12 +28,27 @@ class ofApp : public ofBaseApp{
 		
         int getWinner();
         void clearBoard();
+        void saveGame();
+        void replayGame();
+        vector<string> lineToVector(string line);
         
+    ofImage background;
+    ofImage menubackground;
+    
     ofSoundPlayer bgm;
     ofSoundPlayer clickSound;
+    ofSoundPlayer restartSound;
+    ofSoundPlayer undoSound;
+    ofSoundPlayer saveSound;
+    ofSoundPlayer replaySound;
     
     SimpleButton restart_button = SimpleButton("", 0, 0);
-    SimpleButton retract_button = SimpleButton("", 0, 0);
+    SimpleButton undo_button = SimpleButton("", 0, 0);
+    SimpleButton save_button = SimpleButton("", 0, 0);
+    SimpleButton replay_button = SimpleButton("", 0, 0);
+    
+    ofFile fout;
+    ofFile fin;
         
         //ofEasyCam cam; //zoom in/out
 };

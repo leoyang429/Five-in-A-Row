@@ -1,4 +1,6 @@
 ofxButtons-master
 ofxCircleMenuButton-master
+ofxDate-master
+ofxMySQL-master
 ofxNotifications-master
 ofxXmlSettings

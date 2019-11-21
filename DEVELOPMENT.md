@@ -8,3 +8,8 @@
 - **11/21/19** Added features to the game
   - Added Restart and Retract buttons
   - Added desktop notification indicating who wins
+  - Decorated the board and stone with images
+  - Added Save and Replay buttons
+  - Added Dialog box for user input of match name
+  - Added Replay Feature
+  - Still need to improve the history match selection process (possibly add an index)
