@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxButtons.h"
+#include "ofxNotifications.h"
 
 class ofApp : public ofBaseApp{
 
@@ -22,9 +24,13 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		
         int getWinner();
+        void clearBoard();
         
-        ofSoundPlayer bgm;
-        ofSoundPlayer clickSound;
+    ofSoundPlayer bgm;
+    ofSoundPlayer clickSound;
+    
+    SimpleButton restart_button = SimpleButton("", 0, 0);
+    SimpleButton retract_button = SimpleButton("", 0, 0);
         
         //ofEasyCam cam; //zoom in/out
 };

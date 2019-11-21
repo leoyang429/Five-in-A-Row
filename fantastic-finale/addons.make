@@ -1,1 +1,4 @@
+ofxButtons-master
 ofxCircleMenuButton-master
+ofxNotifications-master
+ofxXmlSettings

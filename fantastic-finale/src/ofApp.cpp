@@ -5,6 +5,8 @@ typedef pair<double, double> point;
 const int kBoardSize = 15;
 const double kRadius = 20;
 
+const double kMargin = 100;
+
 const int kNoPlayer = 0;
 const int kFirstPlayer = 1;
 const int kSecondPlayer = 2;
@@ -27,6 +29,15 @@ void ofApp::setup(){
 
     // called only once
     
+    const double kWidth = ofGetWidth() / (kBoardSize + 1);
+    const double kHeight = (ofGetHeight() - kMargin) / (kBoardSize + 1);
+    
+    restart_button = SimpleButton("Restart", 110, ofGetHeight() - kMargin + 10);
+    restart_button.visible = true;
+    
+    retract_button = SimpleButton("Retract", 310, ofGetHeight() - kMargin + 10);
+    retract_button.visible = true;
+    
     board = vector<vector<int> >(kBoardSize, vector<int>(kBoardSize, kNoPlayer));
     which_player = kFirstPlayer;
     
@@ -36,9 +47,6 @@ void ofApp::setup(){
     bgm.setVolume(0.03f);
     
     clickSound.load("click.mp3");
-    
-    const double kWidth = ofGetWidth() / (kBoardSize + 1);
-    const double kHeight = ofGetHeight() / (kBoardSize + 1);
     
     for (int i = 1; i <= kBoardSize; ++i) {
         for (int j = 1; j <= kBoardSize; ++j) {
@@ -51,11 +59,16 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    if (getWinner() != kNoPlayer) {
-        cout << "Congrats to player " << getWinner() << " !" << endl;
+    int winner = getWinner();
+    if (winner != kNoPlayer) {
+        cout << "Congrats to player " << winner << " !" << endl;
+        if(winner == kFirstPlayer) {
+            ofxNotification("Congrats to player 1", "You win!!");
+        } else {
+            ofxNotification("Congrats to player 2", "You win!!");
+        }
         OF_EXIT_APP(0);
     }
-    
     
 }
 
@@ -64,26 +77,34 @@ void ofApp::draw(){
     
     // called every frame
     
-    const double kWidth = 1.0 * ofGetWidth() / (kBoardSize + 1);
-    const double kHeight = 1.0 * ofGetHeight() / (kBoardSize + 1);
+    const double kWidth = ofGetWidth() / (kBoardSize + 1);
+    const double kHeight = (ofGetHeight() - kMargin) / (kBoardSize + 1);
     
-    ofSetColor(255,255,255);
+    ofFill();
+    
+    ofSetColor(255, 255, 255);
     ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
     
+    ofSetColor(237, 189, 101);
+    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight() - kMargin);
+    
     ofSetColor(0, 0, 0);
-    for(int i = 1; i <= kBoardSize; ++i) ofDrawLine(i * kWidth, 0, i * kWidth, ofGetHeight());
+    for(int i = 1; i <= kBoardSize; ++i) ofDrawLine(i * kWidth, 0, i * kWidth, ofGetHeight() - kMargin);
     for(int i = 1; i <= kBoardSize; ++i) ofDrawLine(0, i * kHeight, ofGetWidth(), i * kHeight);
     
     bool is_first_player = true;
     for(point circle: circles) {
         if (is_first_player) {
-            ofSetColor(0, 100, 0);
+            ofSetColor(0, 0, 0);
         } else {
-            ofSetColor(0, 0, 100);
+            ofSetColor(255, 255, 255);
         }
         ofDrawCircle(circle.first, circle.second, kRadius);
         is_first_player = !is_first_player;
     }
+    
+    restart_button.draw();
+    retract_button.draw();
     
 }
 
@@ -110,11 +131,14 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     
+    const double kDistance = 30;
+    
     for (int i = 0; i < intersects.size(); ++i) {
         
         point intersect = intersects[i];
         
-        if (sqrt((x - intersect.first) * (x - intersect.first) + (y - intersect.second) * (y - intersect.second)) < 30) {
+        if (sqrt((x - intersect.first) * (x - intersect.first) + (y - intersect.second) * (y - intersect.second)) < kDistance
+            && board[i % kBoardSize][i / kBoardSize] == kNoPlayer) {
             circles.push_back(intersect);
             
             board[i % kBoardSize][i / kBoardSize] = which_player;
@@ -126,6 +150,16 @@ void ofApp::mousePressed(int x, int y, int button){
             break;
         }
     
+    }
+    
+    if (restart_button.checkClick(x, y)) {
+        clearBoard();
+    }
+    
+    if (retract_button.checkClick(x, y)) {
+        if (!circles.empty()) {
+            circles.pop_back();
+        }
     }
     
 }
@@ -189,4 +223,9 @@ int ofApp::getWinner() {
     
     return kNoPlayer;
         
+}
+
+void ofApp::clearBoard() {
+    which_player = 1;
+    circles.clear();
 }

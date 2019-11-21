@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05A953A4A7B948AEDD1E9944 /* SimpleButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62614F4AA530798F90DBAF2 /* SimpleButton.cpp */; };
+		07ACA09FCEEDE5E4E5779ECB /* ofxNotifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F1CB88726F5B0DEA63BA53A /* ofxNotifications.cpp */; };
+		2068A68E1B10D8C8D7ED0647 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6AFE2357DF151560AF87A34A /* tinyxmlparser.cpp */; };
+		241F529F627913109672C832 /* ToggleItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FB864851121A7E473A9C8E0 /* ToggleItem.cpp */; };
+		3C7A3C0611E8A4B7175E5FCE /* ButtonManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812F2D34A20EEF0BA316555E /* ButtonManager.cpp */; };
+		42D1FA8255DE8799FF9010B1 /* ColorPickerItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C87410FFAA4B29C704F1B /* ColorPickerItem.cpp */; };
+		65E086527C47CC401D5EB6B1 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30C21D825CAE3B1A057AD072 /* tinyxml.cpp */; };
+		8FC324B2B0C1C29D5F676855 /* ButtonPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC448A561C6E0AD4AF11FE /* ButtonPanel.cpp */; };
+		C6C48B9D77DA82B3AC36ACB4 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C9020978C7AEB4F6EACEB51 /* tinyxmlerror.cpp */; };
+		D9BD43AC9128AEF4659E0A2B /* ListItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 500222248CBA71A77F7FA062 /* ListItem.cpp */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
+		E87034E24256AD35DB177B33 /* SelectionItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8C677259573B820BB6679 /* SelectionItem.cpp */; };
+		EA7256728CF85C7B142CF1BB /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 287DFC333C3D29ABC0119DCE /* ofxXmlSettings.cpp */; };
+		F3EE59FADE920A3D9C88A1F7 /* ofxNotifications.mm in Sources */ = {isa = PBXBuildFile; fileRef = 139975BDFD93E0B90B361A6E /* ofxNotifications.mm */; };
+		F6CDC55698648D898E2B3546 /* FlashItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B2DA8983F24206C264F497 /* FlashItem.cpp */; };
+		FAD151B64EDE3E3236537B24 /* SliderItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 75540C44D704A03ECB49812D /* SliderItem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,6 +39,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0CB4E9624CFB3A478B071DC2 /* ofxNotifications.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxNotifications.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src/ofxNotifications.h"; sourceTree = SOURCE_ROOT; };
+		139975BDFD93E0B90B361A6E /* ofxNotifications.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = ofxNotifications.mm; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src/ofxNotifications.mm"; sourceTree = SOURCE_ROOT; };
+		19A6929838AEAD1F2CB833A0 /* tinyxml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = tinyxml.h; path = ../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs/tinyxml.h; sourceTree = SOURCE_ROOT; };
+		1F1CB88726F5B0DEA63BA53A /* ofxNotifications.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxNotifications.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src/ofxNotifications.cpp"; sourceTree = SOURCE_ROOT; };
+		1FFC448A561C6E0AD4AF11FE /* ButtonPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ButtonPanel.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ButtonPanel.cpp"; sourceTree = SOURCE_ROOT; };
+		26E4DA66A6ADC0FB2ECE4951 /* ButtonPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ButtonPanel.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ButtonPanel.h"; sourceTree = SOURCE_ROOT; };
+		287DFC333C3D29ABC0119DCE /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxXmlSettings.cpp; path = ../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src/ofxXmlSettings.cpp; sourceTree = SOURCE_ROOT; };
+		30C21D825CAE3B1A057AD072 /* tinyxml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = tinyxml.cpp; path = ../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs/tinyxml.cpp; sourceTree = SOURCE_ROOT; };
+		394241DB6C0672026170BBEC /* ToggleItem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ToggleItem.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ToggleItem.h"; sourceTree = SOURCE_ROOT; };
+		3AEBB6DA926D7EE9BC8FE1D9 /* ColorPickerItem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ColorPickerItem.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ColorPickerItem.h"; sourceTree = SOURCE_ROOT; };
+		3E31522B75AF8777FEF9532B /* SimpleButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SimpleButton.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/SimpleButton.h"; sourceTree = SOURCE_ROOT; };
+		46BBF6C035240397BBE67F5D /* SelectionItem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SelectionItem.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/SelectionItem.h"; sourceTree = SOURCE_ROOT; };
+		500222248CBA71A77F7FA062 /* ListItem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ListItem.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ListItem.cpp"; sourceTree = SOURCE_ROOT; };
+		52B2DA8983F24206C264F497 /* FlashItem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = FlashItem.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/FlashItem.cpp"; sourceTree = SOURCE_ROOT; };
+		597AA6F9EAEF0F4F5855D6C8 /* ofxButtons.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxButtons.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ofxButtons.h"; sourceTree = SOURCE_ROOT; };
+		5C9020978C7AEB4F6EACEB51 /* tinyxmlerror.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = tinyxmlerror.cpp; path = ../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs/tinyxmlerror.cpp; sourceTree = SOURCE_ROOT; };
+		5FB864851121A7E473A9C8E0 /* ToggleItem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ToggleItem.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ToggleItem.cpp"; sourceTree = SOURCE_ROOT; };
+		5FD8C677259573B820BB6679 /* SelectionItem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SelectionItem.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/SelectionItem.cpp"; sourceTree = SOURCE_ROOT; };
+		6AFE2357DF151560AF87A34A /* tinyxmlparser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = tinyxmlparser.cpp; path = ../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
+		75540C44D704A03ECB49812D /* SliderItem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SliderItem.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/SliderItem.cpp"; sourceTree = SOURCE_ROOT; };
+		769A5EC0D12C412AA3304C14 /* ListItem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ListItem.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ListItem.h"; sourceTree = SOURCE_ROOT; };
+		812F2D34A20EEF0BA316555E /* ButtonManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ButtonManager.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonManager.cpp"; sourceTree = SOURCE_ROOT; };
+		8B0C87410FFAA4B29C704F1B /* ColorPickerItem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ColorPickerItem.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/ColorPickerItem.cpp"; sourceTree = SOURCE_ROOT; };
+		9BE86DD2EE142A766B4F25DF /* ofxXmlSettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxXmlSettings.h; path = ../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src/ofxXmlSettings.h; sourceTree = SOURCE_ROOT; };
+		A9EE9FC90B5C012FDAF6DCA2 /* FlashItem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = FlashItem.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/FlashItem.h"; sourceTree = SOURCE_ROOT; };
+		D62614F4AA530798F90DBAF2 /* SimpleButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = SimpleButton.cpp; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/SimpleButton.cpp"; sourceTree = SOURCE_ROOT; };
 		E16998823E48B8C8F32E1D10 /* ofxCircleMenuButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxCircleMenuButton.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxCircleMenuButton-master/src/ofxCircleMenuButton.h"; sourceTree = SOURCE_ROOT; };
 		E42962AC2163EDD300A6A9E2 /* ofCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofCamera.cpp; path = ../../../../../../Downloads/of_v0.10.1_osx_release/libs/openFrameworks/3d/ofCamera.cpp; sourceTree = SOURCE_ROOT; };
 		E42962AD2163EDD300A6A9E2 /* ofMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ofMesh.h; path = ../../../../../../Downloads/of_v0.10.1_osx_release/libs/openFrameworks/3d/ofMesh.h; sourceTree = SOURCE_ROOT; };
@@ -206,6 +247,8 @@
 		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		EF9DE0DAE53FF44ED8A37AA9 /* ButtonManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ButtonManager.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonManager.h"; sourceTree = SOURCE_ROOT; };
+		FA8E931B5F779F31F892A7B3 /* SliderItem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SliderItem.h; path = "../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel/SliderItem.h"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +262,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				6E54289412D2D94F45A05113 /* libs */,
+				6ECEF0D76BC33727823EADFF /* src */,
+			);
+			name = ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		2381C6BAA6651C0E0F39B0FD /* ofxButtons-master */ = {
+			isa = PBXGroup;
+			children = (
+				8748131B708DD95655933441 /* src */,
+			);
+			name = "ofxButtons-master";
+			sourceTree = "<group>";
+		};
 		43775CD992D0E1A47B76EF35 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +294,57 @@
 			name = local_addons;
 			sourceTree = "<group>";
 		};
+		6E54289412D2D94F45A05113 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				30C21D825CAE3B1A057AD072 /* tinyxml.cpp */,
+				19A6929838AEAD1F2CB833A0 /* tinyxml.h */,
+				5C9020978C7AEB4F6EACEB51 /* tinyxmlerror.cpp */,
+				6AFE2357DF151560AF87A34A /* tinyxmlparser.cpp */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		6ECEF0D76BC33727823EADFF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				287DFC333C3D29ABC0119DCE /* ofxXmlSettings.cpp */,
+				9BE86DD2EE142A766B4F25DF /* ofxXmlSettings.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		8748131B708DD95655933441 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				812F2D34A20EEF0BA316555E /* ButtonManager.cpp */,
+				EF9DE0DAE53FF44ED8A37AA9 /* ButtonManager.h */,
+				F69DB24951D3E871848C4053 /* ButtonPanel */,
+				D62614F4AA530798F90DBAF2 /* SimpleButton.cpp */,
+				3E31522B75AF8777FEF9532B /* SimpleButton.h */,
+				597AA6F9EAEF0F4F5855D6C8 /* ofxButtons.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		9030151D7CDEE89D499F21DF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1F1CB88726F5B0DEA63BA53A /* ofxNotifications.cpp */,
+				0CB4E9624CFB3A478B071DC2 /* ofxNotifications.h */,
+				139975BDFD93E0B90B361A6E /* ofxNotifications.mm */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		B0FCF236B8EB24E5D6F1C13B /* ofxNotifications-master */ = {
+			isa = PBXGroup;
+			children = (
+				9030151D7CDEE89D499F21DF /* src */,
+			);
+			name = "ofxNotifications-master";
+			sourceTree = "<group>";
+		};
 		B27F7CC281E4A852FACE2AFF /* ofxCircleMenuButton-master */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,7 +356,10 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				2381C6BAA6651C0E0F39B0FD /* ofxButtons-master */,
 				B27F7CC281E4A852FACE2AFF /* ofxCircleMenuButton-master */,
+				B0FCF236B8EB24E5D6F1C13B /* ofxNotifications-master */,
+				1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -555,6 +669,27 @@
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
+		F69DB24951D3E871848C4053 /* ButtonPanel */ = {
+			isa = PBXGroup;
+			children = (
+				1FFC448A561C6E0AD4AF11FE /* ButtonPanel.cpp */,
+				26E4DA66A6ADC0FB2ECE4951 /* ButtonPanel.h */,
+				8B0C87410FFAA4B29C704F1B /* ColorPickerItem.cpp */,
+				3AEBB6DA926D7EE9BC8FE1D9 /* ColorPickerItem.h */,
+				52B2DA8983F24206C264F497 /* FlashItem.cpp */,
+				A9EE9FC90B5C012FDAF6DCA2 /* FlashItem.h */,
+				500222248CBA71A77F7FA062 /* ListItem.cpp */,
+				769A5EC0D12C412AA3304C14 /* ListItem.h */,
+				5FD8C677259573B820BB6679 /* SelectionItem.cpp */,
+				46BBF6C035240397BBE67F5D /* SelectionItem.h */,
+				75540C44D704A03ECB49812D /* SliderItem.cpp */,
+				FA8E931B5F779F31F892A7B3 /* SliderItem.h */,
+				5FB864851121A7E473A9C8E0 /* ToggleItem.cpp */,
+				394241DB6C0672026170BBEC /* ToggleItem.h */,
+			);
+			name = ButtonPanel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -655,6 +790,21 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				3C7A3C0611E8A4B7175E5FCE /* ButtonManager.cpp in Sources */,
+				8FC324B2B0C1C29D5F676855 /* ButtonPanel.cpp in Sources */,
+				42D1FA8255DE8799FF9010B1 /* ColorPickerItem.cpp in Sources */,
+				F6CDC55698648D898E2B3546 /* FlashItem.cpp in Sources */,
+				D9BD43AC9128AEF4659E0A2B /* ListItem.cpp in Sources */,
+				E87034E24256AD35DB177B33 /* SelectionItem.cpp in Sources */,
+				FAD151B64EDE3E3236537B24 /* SliderItem.cpp in Sources */,
+				241F529F627913109672C832 /* ToggleItem.cpp in Sources */,
+				05A953A4A7B948AEDD1E9944 /* SimpleButton.cpp in Sources */,
+				07ACA09FCEEDE5E4E5779ECB /* ofxNotifications.cpp in Sources */,
+				F3EE59FADE920A3D9C88A1F7 /* ofxNotifications.mm in Sources */,
+				65E086527C47CC401D5EB6B1 /* tinyxml.cpp in Sources */,
+				C6C48B9D77DA82B3AC36ACB4 /* tinyxmlerror.cpp in Sources */,
+				2068A68E1B10D8C8D7ED0647 /* tinyxmlparser.cpp in Sources */,
+				EA7256728CF85C7B142CF1BB /* ofxXmlSettings.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,7 +836,12 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel",
 					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxCircleMenuButton-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src",
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs,
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
@@ -712,7 +867,12 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel",
 					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxCircleMenuButton-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src",
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs,
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -753,7 +913,12 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel",
 					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxCircleMenuButton-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src",
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs,
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
@@ -790,7 +955,12 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel",
 					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxCircleMenuButton-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src",
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs,
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
@@ -816,7 +986,12 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel",
 					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxCircleMenuButton-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src",
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs,
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -846,7 +1021,12 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxButtons-master/src/ButtonPanel",
 					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxCircleMenuButton-master/src",
+					"../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxNotifications-master/src",
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/libs,
+					../../../../../../Downloads/of_v0.10.1_osx_release/addons/ofxXmlSettings/src,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
