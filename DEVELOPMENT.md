@@ -6,5 +6,5 @@
   - Still need some decoration
 
 - **11/21/19** Added features to the game
--  Added Restart and Retract buttons
--  Added desktop notification indicating who wins
+  - Added Restart and Retract buttons
+  - Added desktop notification indicating who wins
