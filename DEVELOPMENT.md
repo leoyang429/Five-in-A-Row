@@ -12,4 +12,5 @@
   - Added Save and Replay buttons
   - Added Dialog box for user input of match name
   - Added Replay Feature
+  - Enabled Replay by pressing Space
   - Still need to improve the history match selection process (possibly add an index)

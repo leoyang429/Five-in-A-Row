@@ -24,6 +24,8 @@ bool game_ends = false;
 vector<point> intersects;
 vector<int> moves;
 
+// things might get a bit messy by having two modes
+// but I don't know how to get things done otherwise with only one draw() method
 bool replay_mode = false;
 vector<string> replay;
 int replay_move= 2;
@@ -66,12 +68,16 @@ void ofApp::setup(){
     bgm.play();
     
     clickSound.load("click.mp3");
+    
     restartSound.load("restart.mp3");
     restartSound.setVolume(0.3f);
+    
     undoSound.load("undo.wav");
     undoSound.setVolume(0.3f);
+    
     saveSound.load("save.mp3");
     saveSound.setVolume(0.3f);
+    
     replaySound.load("replay.mp3");
     replaySound.setVolume(0.3f);
     
@@ -144,7 +150,20 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    if (key == ' ' && replay_mode) {
+        if (replay_move < replay.size()) {
+            
+            // use "i" simply to be in accordance with the subsequent code
+            int i = ofToInt(replay[replay_move++]);
+            moves.push_back(i);
+            
+            board[i % kBoardSize][i / kBoardSize] = which_player;
+            which_player = (which_player == 1) ? 2 : 1;
+            
+            clickSound.play();
+        }
+        return;
+    }
 }
 
 //--------------------------------------------------------------
@@ -171,8 +190,15 @@ void ofApp::mousePressed(int x, int y, int button){
     
     if (y <= ofGetHeight() - kMargin && replay_mode) {
         if (replay_move < replay.size()) {
+            
+            // use "i" simply to be in accordance with the subsequent code
+            int i = ofToInt(replay[replay_move++]);
+            moves.push_back(i);
+            
+            board[i % kBoardSize][i / kBoardSize] = which_player;
+            which_player = (which_player == 1) ? 2 : 1;
+            
             clickSound.play();
-            moves.push_back(ofToInt(replay[replay_move++]));
         }
         return;
     }
@@ -181,7 +207,8 @@ void ofApp::mousePressed(int x, int y, int button){
         
         point intersect = intersects[i];
         
-        if (sqrt((x - intersect.first) * (x - intersect.first) + (y - intersect.second) * (y - intersect.second)) < kDistance
+        if (sqrt((x - intersect.first) * (x - intersect.first)
+                 + (y - intersect.second) * (y - intersect.second)) < kDistance
             && board[i % kBoardSize][i / kBoardSize] == kNoPlayer) {
             moves.push_back(i);
             
@@ -277,7 +304,8 @@ int ofApp::getWinner() {
                         int x = i + l * kXChange[k];
                         int y = j + l * kYChange[k];
                         
-                        if (x < 0 || y < 0 || x >= kBoardSize || y >= kBoardSize || board[x][y] != board[i][j]) {
+                        if (x < 0 || y < 0 || x >= kBoardSize || y >= kBoardSize
+                            || board[x][y] != board[i][j]) {
                             is_winner = false;
                             break;
                         }
@@ -307,6 +335,8 @@ void ofApp::clearBoard() {
 }
 
 void ofApp::saveGame() {
+    
+    // still need to ensure the name of a particular day is unique
     string match_name = ofSystemTextBoxDialog("Please enter a name for your match", "untitled");
     fout << ofGetYear() << ofGetMonth() << ofGetDay() << ' ';
     fout << match_name << ' ';
