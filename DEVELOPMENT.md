@@ -1,4 +1,6 @@
-- **11/20/19** Designed the game board and added sound tracks
+- **11/20/19** Designed the game board
+  - Drew the board and stones
   - Enabled players to click on the board to make moves
-  - Could evaluate the board (who wins)
+  - Added BGM and click sound
+  - Added evaluation of the board (who wins)
   - Still need some decoration
