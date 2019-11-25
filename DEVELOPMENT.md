@@ -1,4 +1,6 @@
 - **11/20/19** Designed the game board
+  - Failed to integrate mysqlc++.h because missing dependencies in mysql.h
+  - Integrated ofxButtons and ofxNotifications
   - Drew the board and stones
   - Enabled players to click on the board to make moves
   - Added BGM and click sound
