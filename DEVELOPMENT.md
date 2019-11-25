@@ -14,3 +14,9 @@
   - Added Replay Feature
   - Enabled Replay by pressing Space
   - Still need to improve the history match selection process (possibly add an index)
+  - Still need to break down the code
+
+- **11/25/19** Refactored the code
+  - Added Gomoku class to record the board
+  - Migrated functions such as adding stones to board to Gomoku class
+  - Still need to fix other issues brought up on Nov. 21

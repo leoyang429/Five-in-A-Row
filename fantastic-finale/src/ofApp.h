@@ -4,6 +4,9 @@
 #include "ofUtils.h"
 #include "ofSystemUtils.h"
 
+#include "gomoku.hpp"
+
+// external libraries
 #include "ofxButtons.h"
 #include "ofxNotifications.h"
 
@@ -26,11 +29,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-        int getWinner();
-        void clearBoard();
         void saveGame();
         void replayGame();
-        vector<string> lineToVector(string line);
         
     ofImage background;
     ofImage menubackground;
@@ -50,5 +50,5 @@ class ofApp : public ofBaseApp{
     ofFile fout;
     ofFile fin;
         
-        //ofEasyCam cam; //zoom in/out
+    //ofEasyCam cam; //zoom in/out; this actually might make the board more interesting
 };
