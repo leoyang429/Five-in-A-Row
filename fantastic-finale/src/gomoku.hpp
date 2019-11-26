@@ -13,6 +13,10 @@ const int kSecondPlayer = 2;
 
 const int kConsecutive = 5;
 
+const int kXChange[8]={0, 0, 1, 1, 1, -1, -1, -1};
+const int kYChange[8]={1, -1, 0, 1, -1, 0, 1, -1};
+const int kDirections = 8;
+
 class Gomoku {
     
 private:

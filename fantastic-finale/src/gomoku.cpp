@@ -47,11 +47,12 @@ void Gomoku::Undo() {
 
 int Gomoku::GetWinner() {
     
-    const int kXChange[8]={0, 0, 1, 1, 1, -1, -1, -1};
-    const int kYChange[8]={1, -1, 0, 1, -1, 0, 1, -1};
-    const int kDirections = 8;
+    // it has been proved that the first player can always win
+    // even with balance breakers
+    // check the following website
+    // http://www.sze.hu/~gtakacs/download/wagnervirag_2001.pdf
+    // so there's no need to consider balance breakers
     
-    // still need to consider balance breaker for player 1
     for (int i = 0; i < kBoardSize; ++i) {
         for (int j = 0; j < kBoardSize; ++j) {
             if (board[i][j] != kNoPlayer) {
@@ -127,9 +128,9 @@ bool Gomoku::IsReplayMode() {
 
 vector<string> Gomoku::lineToVector(string line) {
     vector<string> vec;
-    istringstream ss(line);
+    istringstream input_string_stream(line);
     string temp;
-    while(ss >> temp) {
+    while(input_string_stream >> temp) {
         vec.push_back(temp);
     }
     return vec;

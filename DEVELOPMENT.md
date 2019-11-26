@@ -21,4 +21,7 @@
 - **11/25/19** Refactored the code
   - Added Gomoku class to record the board
   - Migrated functions such as adding stones to board to Gomoku class
+  - Added Exit Button to exit the game
+  - Enabled Catch for Unit Testing
   - Still need to fix other issues brought up on Nov. 21
+  - Still need to write unit tests for Gomoku class

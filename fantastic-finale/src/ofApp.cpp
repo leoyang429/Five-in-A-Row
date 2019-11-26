@@ -2,11 +2,7 @@
 
 typedef pair<double, double> point;
 
-const double kRadius = 20;
-const double kMargin = 100;
-
 Gomoku gomoku;
-
 vector<point> intersects;
 
 //--------------------------------------------------------------
@@ -33,6 +29,9 @@ void ofApp::setup(){
     
     replay_button = SimpleButton("Replay", 710, ofGetHeight() - kMargin + 10);
     replay_button.visible = true;
+    
+    exit_button = SimpleButton("Exit", 910, ofGetHeight() - kMargin + 10);
+    exit_button.visible = true;
     
     bgm.load("thegameison.mp3");
     bgm.setLoop(true);
@@ -97,8 +96,12 @@ void ofApp::draw(){
     //ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight() - kMargin);
     
     ofSetColor(0, 0, 0);
-    for(int i = 1; i <= kBoardSize; ++i) ofDrawLine(i * kWidth, 0, i * kWidth, ofGetHeight() - kMargin);
-    for(int i = 1; i <= kBoardSize; ++i) ofDrawLine(0, i * kHeight, ofGetWidth(), i * kHeight);
+    for(int i = 1; i <= kBoardSize; ++i) {
+        ofDrawLine(i * kWidth, 0, i * kWidth, ofGetHeight() - kMargin);
+    }
+    for(int i = 1; i <= kBoardSize; ++i) {
+        ofDrawLine(0, i * kHeight, ofGetWidth(), i * kHeight);
+    }
     
     vector<int> moves = gomoku.GetMoves();
     bool is_first_player = true;
@@ -116,6 +119,7 @@ void ofApp::draw(){
     undo_button.draw();
     save_button.draw();
     replay_button.draw();
+    exit_button.draw();
     
 }
 
@@ -200,6 +204,10 @@ void ofApp::mousePressed(int x, int y, int button){
             replay_button = SimpleButton("Replay", 710, ofGetHeight() - kMargin + 10);
             replay_button.visible = true;
         }
+    }
+    
+    if (exit_button.checkClick(x, y)) {
+        _Exit(0);
     }
     
 }

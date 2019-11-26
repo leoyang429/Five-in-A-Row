@@ -5,10 +5,14 @@
 #include "ofSystemUtils.h"
 
 #include "gomoku.hpp"
+#include "gomoku-ai.hpp"
 
 // external libraries
 #include "ofxButtons.h"
 #include "ofxNotifications.h"
+
+const double kRadius = 20;
+const double kMargin = 100;
 
 class ofApp : public ofBaseApp{
 
@@ -32,23 +36,23 @@ class ofApp : public ofBaseApp{
         void saveGame();
         void replayGame();
         
-    ofImage background;
-    ofImage menubackground;
+        ofImage background;
+        ofImage menubackground;
     
-    ofSoundPlayer bgm;
-    ofSoundPlayer clickSound;
-    ofSoundPlayer restartSound;
-    ofSoundPlayer undoSound;
-    ofSoundPlayer saveSound;
-    ofSoundPlayer replaySound;
+        ofSoundPlayer bgm;
+        ofSoundPlayer clickSound;
+        ofSoundPlayer restartSound;
+        ofSoundPlayer undoSound;
+        ofSoundPlayer saveSound;
+        ofSoundPlayer replaySound;
     
-    SimpleButton restart_button = SimpleButton("", 0, 0);
-    SimpleButton undo_button = SimpleButton("", 0, 0);
-    SimpleButton save_button = SimpleButton("", 0, 0);
-    SimpleButton replay_button = SimpleButton("", 0, 0);
+        SimpleButton restart_button = SimpleButton("", 0, 0);
+        SimpleButton undo_button = SimpleButton("", 0, 0);
+        SimpleButton save_button = SimpleButton("", 0, 0);
+        SimpleButton replay_button = SimpleButton("", 0, 0);
+        SimpleButton exit_button = SimpleButton("", 0, 0);
     
-    ofFile fout;
-    ofFile fin;
-        
-    //ofEasyCam cam; //zoom in/out; this actually might make the board more interesting
+        ofFile fout;
+        ofFile fin;
+    
 };
