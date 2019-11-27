@@ -25,3 +25,8 @@
   - Enabled Catch for Unit Testing
   - Still need to fix other issues brought up on Nov. 21
   - Still need to write unit tests for Gomoku class
+
+- **11/26/19** Developed AI
+  - Implemented & Tested Evaluate function for AI
+  - Implemented Minimax & Alpha-beta pruning for AI
+  - Still need to fix bugs and accelerate computing

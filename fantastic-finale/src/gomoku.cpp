@@ -47,11 +47,8 @@ void Gomoku::Undo() {
 
 int Gomoku::GetWinner() {
     
-    // it has been proved that the first player can always win
-    // even with balance breakers
-    // check the following website
+    // it has been proved that the first player can always win even with balance breakers
     // http://www.sze.hu/~gtakacs/download/wagnervirag_2001.pdf
-    // so there's no need to consider balance breakers
     
     for (int i = 0; i < kBoardSize; ++i) {
         for (int j = 0; j < kBoardSize; ++j) {
@@ -87,7 +84,7 @@ bool Gomoku::SetReplayMode(ofFile fin, string replay_date, string replay_name) {
     
     string to_replay;
     while (getline(fin, to_replay)) {
-        vector<string> might_replay = lineToVector(to_replay);
+        vector<string> might_replay = LineToVector(to_replay);
         if (might_replay.size() > 2 && might_replay[0] == replay_date && might_replay[1] == replay_name) {
             replay = might_replay;
             replay_mode = true;
@@ -126,7 +123,7 @@ bool Gomoku::IsReplayMode() {
     return replay_mode;
 }
 
-vector<string> Gomoku::lineToVector(string line) {
+vector<string> Gomoku::LineToVector(string line) {
     vector<string> vec;
     istringstream input_string_stream(line);
     string temp;

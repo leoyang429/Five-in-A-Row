@@ -18,6 +18,7 @@
 		B34C3D17238C6DCB0019DD22 /* gomoku-ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34C3D15238C6DCB0019DD22 /* gomoku-ai.cpp */; };
 		B355DFF6238CC368007BD090 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B355DFF5238CC368007BD090 /* main.cpp */; };
 		B355DFF8238CC3B8007BD090 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B355DFF7238CC3B8007BD090 /* test.cpp */; };
+		B355DFFB238D659C007BD090 /* gomoku-ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B34C3D15238C6DCB0019DD22 /* gomoku-ai.cpp */; };
 		B3892DA9238C14DB00C5EC24 /* gomoku.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B3892DA7238C14DB00C5EC24 /* gomoku.cpp */; };
 		C6C48B9D77DA82B3AC36ACB4 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C9020978C7AEB4F6EACEB51 /* tinyxmlerror.cpp */; };
 		D9BD43AC9128AEF4659E0A2B /* ListItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 500222248CBA71A77F7FA062 /* ListItem.cpp */; };
@@ -858,6 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B355DFF6238CC368007BD090 /* main.cpp in Sources */,
+				B355DFFB238D659C007BD090 /* gomoku-ai.cpp in Sources */,
 				B355DFF8238CC3B8007BD090 /* test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

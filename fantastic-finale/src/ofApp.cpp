@@ -5,13 +5,20 @@ typedef pair<double, double> point;
 Gomoku gomoku;
 vector<point> intersects;
 
+bool ai_mode;
+GomokuAI gomoku_ai;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
     // called only once
     
+    // break down into logic and ui set
+    
     const double kWidth = ofGetWidth() / (kBoardSize + 1);
     const double kHeight = (ofGetHeight() - kMargin) / (kBoardSize + 1);
+    
+    ai_mode = false;
     
     ofSetCircleResolution(100);
     
@@ -30,7 +37,10 @@ void ofApp::setup(){
     replay_button = SimpleButton("Replay", 710, ofGetHeight() - kMargin + 10);
     replay_button.visible = true;
     
-    exit_button = SimpleButton("Exit", 910, ofGetHeight() - kMargin + 10);
+    ai_button = SimpleButton("AI", 910, ofGetHeight() - kMargin + 10);
+    ai_button.visible = true;
+    
+    exit_button = SimpleButton("Exit", 1210, ofGetHeight() - kMargin + 10);
     exit_button.visible = true;
     
     bgm.load("thegameison.mp3");
@@ -67,7 +77,7 @@ void ofApp::update(){
     
     int winner;
     if (!gomoku.IsGameEnd() && (winner = gomoku.GetWinner()) != kNoPlayer) {
-        cout << "Congrats to player " << winner << " !" << endl;
+        // add sound here
         if(winner == kFirstPlayer) {
             ofSystemAlertDialog("Congrats to player 1, You win!!");
         } else {
@@ -119,6 +129,7 @@ void ofApp::draw(){
     undo_button.draw();
     save_button.draw();
     replay_button.draw();
+    ai_button.draw();
     exit_button.draw();
     
 }
@@ -175,6 +186,12 @@ void ofApp::mousePressed(int x, int y, int button){
             
             clickSound.play();
             
+            if (ai_mode) {
+                board = gomoku.GetBoard();
+                int move = gomoku_ai.Move(board);
+                gomoku.AddMove(move);
+            }
+            
             return;
         }
     
@@ -193,6 +210,13 @@ void ofApp::mousePressed(int x, int y, int button){
     if (save_button.checkClick(x, y)) {
         saveSound.play();
         saveGame();
+    }
+    
+    if (ai_button.checkClick(x, y)) {
+        gomoku.Clear();
+        gomoku_ai = GomokuAI();
+        gomoku_ai.SetIsFirstPlayer(false);
+        ai_mode = true;
     }
     
     if (replay_button.checkClick(x, y)) {

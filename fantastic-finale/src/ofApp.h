@@ -1,8 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofUtils.h"
-#include "ofSystemUtils.h"
 
 #include "gomoku.hpp"
 #include "gomoku-ai.hpp"
@@ -50,6 +48,7 @@ class ofApp : public ofBaseApp{
         SimpleButton undo_button = SimpleButton("", 0, 0);
         SimpleButton save_button = SimpleButton("", 0, 0);
         SimpleButton replay_button = SimpleButton("", 0, 0);
+        SimpleButton ai_button = SimpleButton("", 0, 0);
         SimpleButton exit_button = SimpleButton("", 0, 0);
     
         ofFile fout;
