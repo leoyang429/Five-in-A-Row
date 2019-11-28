@@ -28,5 +28,6 @@
 
 - **11/26/19** Developed AI
   - Implemented & Tested Evaluate function for AI
-  - Implemented Minimax & Alpha-beta pruning for AI
-  - Still need to fix bugs and accelerate computing
+  - Implemented Minimax & Alpha-beta pruning for AI (current thinking depth is 4)
+  - Tested AI by playing against it myself
+  - Still need unit testing for AI

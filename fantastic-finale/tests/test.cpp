@@ -7,7 +7,7 @@ TEST_CASE("GomokuAI") {
     GomokuAI gomoku_ai;
     vector<vector<int> > board(kBoardSize, vector<int>(kBoardSize, 0));
     
-    SECTION("GetScore & Evaluate Function") {
+    SECTION("GetScore Function") {
         gomoku_ai.SetIsFirstPlayer(true);
         
         // empty board
@@ -16,7 +16,6 @@ TEST_CASE("GomokuAI") {
         board[7][7] = 1; // a single stone
         REQUIRE(gomoku_ai.GetScore(board, 1) == 10 + 4 * kConsecutiveScore[1]);
         REQUIRE(gomoku_ai.GetScore(board, 2) == 10);
-        REQUIRE(gomoku_ai.Evaluate(board) == 4 * kConsecutiveScore[1]);
         
         board[7][8] = 1; // two
         REQUIRE(gomoku_ai.GetScore(board, 1) == 10 + 6 * kConsecutiveScore[1] + kConsecutiveScore[2]);

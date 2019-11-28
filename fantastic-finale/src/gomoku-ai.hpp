@@ -8,10 +8,10 @@
 
 typedef unsigned long long ll;
 
-const int kMaxSearchDepth = 5;
+const int kMaxSearchDepth = 4;
 
 const int kWinningScore = 1000000000;
-const int kConsecutiveScore[4] = {0, 0, 50, 1000};
+const int kConsecutiveScore[5] = {0, 0, 50, 500, 5000};
 
 class GomokuAI {
     
@@ -26,7 +26,6 @@ public:
     GomokuAI(); // set up the hash table
     ll RandomUnsignedLL();
     void SetIsFirstPlayer(bool is_first_player);
-    int Evaluate(const std::vector<std::vector<int> >& board); // next move comes from the other player
     int GetScore(const std::vector<std::vector<int> >& board, int player);
     ll GetHash(const std::vector<std::vector<int> >& board);
     int Move(std::vector<std::vector<int> >& board);

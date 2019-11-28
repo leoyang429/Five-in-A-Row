@@ -25,10 +25,6 @@ void GomokuAI::SetIsFirstPlayer(bool is_first_player) {
     is_empty_board = this->is_first_player = is_first_player;
 }
 
-int GomokuAI::Evaluate(const vector<vector<int> >& board) {
-    return GetScore(board, 2 - is_first_player)  - 2 * GetScore(board, 2 - !is_first_player);
-}
-
 int GomokuAI::GetScore(const vector<vector<int> >& board, int player) {
     
     int score = 10;
@@ -93,7 +89,7 @@ int GomokuAI::GetScore(const vector<vector<int> >& board, int player) {
                     if (consecutive >= 4 && skipped_one_intersect) {
                         consecutive = first_half_consecutive;
                     }
-                    
+                    /*
                     if (consecutive == 4) {
                         return kWinningScore;
                     }
@@ -102,10 +98,11 @@ int GomokuAI::GetScore(const vector<vector<int> >& board, int player) {
                         x -= kXChange[k];
                         y -= kYChange[k];
                         if (consecutives[x][y] >= 3 && consecutive >= 3) {
-                            return kWinningScore;
+                            //return kWinningScore;
+                            score += kConsecutiveScore[4];
                         }
                         consecutives[x][y] = max(consecutives[x][y], consecutive);
-                    }
+                    }*/
                     
                     if (consecutive >= 0) {
                         score += kConsecutiveScore[consecutive];
@@ -164,8 +161,8 @@ int GomokuAI::Move(vector<vector<int> >& board) {
 
 int GomokuAI::Minimax(vector<vector<int> >& board, int depth, int alpha_beta) {
     
-    if (depth == kMaxSearchDepth) {
-        return Evaluate(board);
+    if (depth == kMaxSearchDepth || GetScore(board, 1) == kWinningScore || GetScore(board, 2) == kWinningScore) {
+        return GetScore(board, 2 - is_first_player) - 1.5 * GetScore(board, 2 - !is_first_player);
     }
     
     if (depth & 1) {

@@ -187,9 +187,18 @@ void ofApp::mousePressed(int x, int y, int button){
             clickSound.play();
             
             if (ai_mode) {
+                update();
+                if (gomoku.IsGameEnd()) {
+                    return;
+                }
                 board = gomoku.GetBoard();
                 int move = gomoku_ai.Move(board);
-                gomoku.AddMove(move);
+                if (move < 0 || move >= kBoardSize * kBoardSize) {
+                    ofSystemAlertDialog("Computer Resigned, You win!");
+                    gomoku.Clear();
+                } else {
+                    gomoku.AddMove(move);
+                }
             }
             
             return;
