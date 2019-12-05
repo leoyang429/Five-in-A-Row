@@ -36,8 +36,12 @@ class ofApp : public ofBaseApp{
         void SetupBackground();
         void SetupButtons();
         void SetupSound();
-        
         void SetupBoard();
+    
+        void DrawBackground();
+        void DrawBoard();
+        void DrawButtons();
+        void DrawStones();
         
         void GetAIMove();
         void SetAIMode();

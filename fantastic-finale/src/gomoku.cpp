@@ -95,7 +95,7 @@ bool Gomoku::SetReplayMode(ofFile fin, string replay_date, string replay_name) {
 
 void Gomoku::NextReplayMove() {
     if (replay_move < replay.size()) {
-        int move = ofToInt(replay[replay_move++]);
+        int move = std::stoi(replay[replay_move++]);
         moves.push_back(move);
         
         board[move % kBoardSize][move / kBoardSize] = which_player;
@@ -104,12 +104,26 @@ void Gomoku::NextReplayMove() {
 }
 
 void Gomoku::SaveMatch(ofFile fout, string match_name) {
-    fout << ofGetYear() << ofGetMonth() << ofGetDay() << ' ';
+    // this function actually cannot be called
+    // otherwise a readonly file will be opened and fout literally does nothing
+    // also, this makes tests difficult as ofGetYear needs to have lots of other cpps compile
+    
+    /*
+    fout << ofGetYear();
+    if (ofGetMonth() < 10) {
+        fout << 0;
+    }
+    fout << ofGetMonth();
+    if (ofGetDay() < 10) {
+        fout << 0;
+    }
+    fout << ofGetDay() << ' ';
     fout << match_name << ' ';
     for (int move: moves) {
         fout << move << ' ';
     }
     fout << endl;
+    */
 }
 
 void Gomoku::SwitchPlayer() {

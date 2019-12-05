@@ -13,7 +13,6 @@ GomokuAI::GomokuAI() {
     
     is_first_player = false;
     is_empty_board = is_first_player;
-    
 }
 
 ll GomokuAI::RandomUnsignedLL()
@@ -108,6 +107,9 @@ int GomokuAI::GetScore(const vector<vector<int> >& board, int player, bool is_en
 }
 
 ll GomokuAI::GetHash(const vector<vector<int> >& board) {
+    // it isn't called yet
+    // but it's a cool way to hash a chess board
+    
     hash = 0;
     for (int i = 0; i < kBoardSize; ++i) {
         for (int j = 0; j < kBoardSize; ++j) {

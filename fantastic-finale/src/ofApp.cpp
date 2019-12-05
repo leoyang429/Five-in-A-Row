@@ -28,43 +28,11 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
     ofFill();
-    
-    ofSetColor(255, 255, 255);
-    menubackground.draw(0, 0, ofGetWidth(), ofGetHeight());
-    
-    ofSetColor(237, 189, 101);
-    background.draw(0, 0, ofGetWidth(), ofGetHeight() - kMargin);
-    
-    ofSetColor(0, 0, 0);
-    for(int i = 1; i <= kBoardSize; ++i) {
-        ofDrawLine(i * width, 0, i * width, ofGetHeight() - kMargin);
-    }
-    for(int i = 1; i <= kBoardSize; ++i) {
-        ofDrawLine(0, i * height, ofGetWidth(), i * height);
-    }
-    
-    vector<int> moves = gomoku.GetMoves();
-    bool is_first_player = true;
-    for(int move: moves) {
-        if (is_first_player) {
-            ofSetColor(0, 0, 0);
-        } else {
-            ofSetColor(255, 255, 255);
-        }
-        ofDrawCircle(intersects[move].first, intersects[move].second, kRadius);
-        is_first_player = !is_first_player;
-    }
-    
-    restart_button.draw();
-    undo_button.draw();
-    save_button.draw();
-    replay_button.draw();
-    ai_button.draw();
-    exit_button.draw();
-    show_matches_button.draw();
-    
+    DrawBackground();
+    DrawBoard();
+    DrawStones();
+    DrawButtons();
 }
 
 //--------------------------------------------------------------
@@ -264,6 +232,48 @@ void ofApp::SetupBoard() {
     }
 }
 
+void ofApp::DrawBackground() {
+    ofSetColor(255, 255, 255);
+    menubackground.draw(0, 0, ofGetWidth(), ofGetHeight());
+    
+    ofSetColor(237, 189, 101);
+    background.draw(0, 0, ofGetWidth(), ofGetHeight() - kMargin);
+}
+
+void ofApp::DrawBoard() {
+    ofSetColor(0, 0, 0);
+    for(int i = 1; i <= kBoardSize; ++i) {
+        ofDrawLine(i * width, 0, i * width, ofGetHeight() - kMargin);
+    }
+    for(int i = 1; i <= kBoardSize; ++i) {
+        ofDrawLine(0, i * height, ofGetWidth(), i * height);
+    }
+}
+
+void ofApp::DrawButtons() {
+    restart_button.draw();
+    undo_button.draw();
+    save_button.draw();
+    replay_button.draw();
+    ai_button.draw();
+    exit_button.draw();
+    show_matches_button.draw();
+}
+
+void ofApp::DrawStones() {
+    vector<int> moves = gomoku.GetMoves();
+    bool is_first_player = true;
+    for(int move: moves) {
+        if (is_first_player) {
+            ofSetColor(0, 0, 0);
+        } else {
+            ofSetColor(255, 255, 255);
+        }
+        ofDrawCircle(intersects[move].first, intersects[move].second, kRadius);
+        is_first_player = !is_first_player;
+    }
+}
+
 void ofApp::GetAIMove() {
     update();
     if (gomoku.IsGameEnd()) {
@@ -303,7 +313,15 @@ void ofApp::SaveGame() {
     // otherwise it would open a read-only copy
     //gomoku.SaveMatch(fout, match_name);
     
-    fout << ofGetYear() << ofGetMonth() << ofGetDay() << ' ';
+    fout << ofGetYear();
+    if (ofGetMonth() < 10) {
+        fout << 0;
+    }
+    fout << ofGetMonth();
+    if (ofGetDay() < 10) {
+        fout << 0;
+    }
+    fout << ofGetDay() << ' ';
     fout << match_name << ' ';
     for (int move: gomoku.GetMoves()) {
         fout << move << ' ';

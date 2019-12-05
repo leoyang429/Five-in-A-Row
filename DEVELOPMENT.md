@@ -32,8 +32,13 @@
   - Tested AI by playing against it myself
   - Still need unit testing for AI
 
-- **12/4/19** Improved AI
+- **12/04/19** Improved AI
   - Evaluatee the possible moves and sort them first to optimize minimax pruning
   - Reached thinking depth of 6 (can beat myself in many cases)
   - Fixed bugs about saving matches
   - Added "show history matches" feature
+
+- **12/05/19** Added Unit Tests
+  - Added unit tests for Gomoku class as mentioned on Nov. 25
+  - Refactored Gomoku class so that it doesn't depend on openframeworks cpps which complicate the compile process for testing target
+  - The final project is mostly done

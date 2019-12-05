@@ -3,6 +3,7 @@
 
 #include "ofMain.h"
 #include <iostream>
+#include <string>
 #include <vector>
 
 const int kBoardSize = 15;
