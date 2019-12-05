@@ -62,6 +62,8 @@ class ofApp : public ofBaseApp{
         ofSoundPlayer undoSound;
         ofSoundPlayer saveSound;
         ofSoundPlayer replaySound;
+        ofSoundPlayer aiSound;
+        ofSoundPlayer showMatchesSound;
     
         SimpleButton restart_button = SimpleButton("", 0, 0);
         SimpleButton undo_button = SimpleButton("", 0, 0);

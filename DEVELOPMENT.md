@@ -41,4 +41,4 @@
 - **12/05/19** Added Unit Tests
   - Added unit tests for Gomoku class as mentioned on Nov. 25
   - Refactored Gomoku class so that it doesn't depend on openframeworks cpps which complicate the compile process for testing target
-  - The final project is mostly done
+  - The final project is mostly done; still need to add ReadMe file

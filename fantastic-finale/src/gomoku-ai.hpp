@@ -28,6 +28,7 @@ public:
     GomokuAI(); // set up the hash table
     ll RandomUnsignedLL();
     void SetIsFirstPlayer(bool is_first_player);
+    bool GetIsFirstPlayer();
     int GetScore(const std::vector<std::vector<int> >& board, int player, bool is_enemy_next);
     ll GetHash(const std::vector<std::vector<int> >& board);
     int Move(std::vector<std::vector<int> >& board);

@@ -18,10 +18,18 @@ void ofApp::setup(){
 void ofApp::update(){
     int winner;
     if (!gomoku.IsGameEnd() && (winner = gomoku.GetWinner()) != kNoPlayer) {
-        if(winner == kFirstPlayer) {
-            ofSystemAlertDialog("Congrats to player 1, You win!!");
+        if (ai_mode) {
+            if (winner == 2 - gomoku_ai.GetIsFirstPlayer()) {
+                ofSystemAlertDialog("AI wins; please try again:(");
+            } else {
+                ofSystemAlertDialog("Congratulations, You beats AI!!");
+            }
         } else {
-            ofSystemAlertDialog("Congrats to player 2, You win!!");
+            if (winner == kFirstPlayer) {
+                ofSystemAlertDialog("Congrats to player 1, You win!!");
+            } else {
+                ofSystemAlertDialog("Congrats to player 2, You win!!");
+            }
         }
     }
 }
@@ -116,6 +124,7 @@ void ofApp::mousePressed(int x, int y, int button){
     }
     
     if (ai_button.checkClick(x, y)) {
+        aiSound.play();
         SetAIMode();
     }
     
@@ -129,6 +138,7 @@ void ofApp::mousePressed(int x, int y, int button){
     }
     
     if (show_matches_button.checkClick(x, y)) {
+        showMatchesSound.play();
         ShowPastMatches();
     }
     
@@ -219,6 +229,11 @@ void ofApp::SetupSound() {
     
     replaySound.load("replay.mp3");
     replaySound.setVolume(0.3f);
+    
+    aiSound.load("ai.mp3");
+    
+    showMatchesSound.load("showmatches.mp3");
+    showMatchesSound.setVolume(0.3f);
 }
 
 void ofApp::SetupBoard() {

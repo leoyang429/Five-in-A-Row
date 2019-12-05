@@ -25,6 +25,10 @@ void GomokuAI::SetIsFirstPlayer(bool is_first_player) {
     is_empty_board = this->is_first_player = is_first_player;
 }
 
+bool GomokuAI::GetIsFirstPlayer() {
+    return is_first_player;
+}
+
 int GomokuAI::GetScore(const vector<vector<int> >& board, int player, bool is_enemy_next) {
     
     int score = 10;
@@ -169,7 +173,8 @@ int GomokuAI::Minimax(vector<vector<int> >& board, int depth, int alpha_beta) {
         for (int move: potential_moves) {
             int x = move % kBoardSize, y = move / kBoardSize;
             board[x][y]=2-is_first_player;
-            pq.push(make_pair(GetScore(board, 2-is_first_player, true)-GetScore(board, 2-!is_first_player, false), move));
+            pq.push(make_pair(GetScore(board, 2 - is_first_player, true)
+                              - GetScore(board, 2 - !is_first_player, false), move));
             board[x][y]=kNoPlayer;
         }
         while(!pq.empty()){
@@ -204,7 +209,8 @@ int GomokuAI::Minimax(vector<vector<int> >& board, int depth, int alpha_beta) {
         for (int move: potential_moves) {
             int x = move % kBoardSize, y = move / kBoardSize;
             board[x][y]=2-!is_first_player;
-            pq.push(make_pair(GetScore(board, 2-!is_first_player, true)-GetScore(board, 2-is_first_player, false), move));
+            pq.push(make_pair(GetScore(board, 2 - !is_first_player, true)
+                              - GetScore(board, 2 - is_first_player, false), move));
             board[x][y]=kNoPlayer;
         }
         while(!pq.empty()){
