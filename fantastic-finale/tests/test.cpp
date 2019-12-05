@@ -11,7 +11,7 @@ TEST_CASE("GomokuAI") {
         gomoku_ai.SetIsFirstPlayer(true);
         
         // empty board
-        REQUIRE(gomoku_ai.GetScore(board, 1) == 10);
+        REQUIRE(gomoku_ai.GetScore(board, 1, true) == 10);
         
         board[7][7] = 1; // a single stone
         REQUIRE(gomoku_ai.GetScore(board, 1) == 10 + 4 * kConsecutiveScore[1]);

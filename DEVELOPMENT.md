@@ -31,3 +31,9 @@
   - Implemented Minimax & Alpha-beta pruning for AI (current thinking depth is 4)
   - Tested AI by playing against it myself
   - Still need unit testing for AI
+
+- **12/4/19** Improved AI
+  - Evaluatee the possible moves and sort them first to optimize minimax pruning
+  - Reached thinking depth of 6 (can beat myself in many cases)
+  - Fixed bugs about saving matches
+  - Added "show history matches" feature

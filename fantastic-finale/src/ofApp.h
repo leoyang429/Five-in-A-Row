@@ -11,14 +11,15 @@
 
 const double kRadius = 20;
 const double kMargin = 100;
+const string kSavedGames = "savedgames";
 
 class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
 		void update();
-		void draw();
-
+        void draw();
+    
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void mouseMoved(int x, int y );
@@ -30,9 +31,23 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
-        void saveGame();
-        void replayGame();
+    
+        void SetupUI();
+        void SetupBackground();
+        void SetupButtons();
+        void SetupSound();
+        
+        void SetupBoard();
+        
+        void GetAIMove();
+        void SetAIMode();
+        void SetReplayMode();
+        void SaveGame();
+        void ReplayGame();
+        void ShowPastMatches();
+    
+        double width;
+        double height;
         
         ofImage background;
         ofImage menubackground;
@@ -50,6 +65,7 @@ class ofApp : public ofBaseApp{
         SimpleButton replay_button = SimpleButton("", 0, 0);
         SimpleButton ai_button = SimpleButton("", 0, 0);
         SimpleButton exit_button = SimpleButton("", 0, 0);
+        SimpleButton show_matches_button = SimpleButton("", 0, 0);
     
         ofFile fout;
         ofFile fin;

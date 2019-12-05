@@ -5,112 +5,44 @@ typedef pair<double, double> point;
 Gomoku gomoku;
 vector<point> intersects;
 
-bool ai_mode;
+bool ai_mode = false;
 GomokuAI gomoku_ai;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
-    // called only once
-    
-    // break down into logic and ui set
-    
-    const double kWidth = ofGetWidth() / (kBoardSize + 1);
-    const double kHeight = (ofGetHeight() - kMargin) / (kBoardSize + 1);
-    
-    ai_mode = false;
-    
-    ofSetCircleResolution(100);
-    
-    background.load("boardbackground.jpeg");
-    menubackground.load("menubackground.jpeg");
-    
-    restart_button = SimpleButton("Restart", 110, ofGetHeight() - kMargin + 10);
-    restart_button.visible = true;
-    
-    undo_button = SimpleButton("Undo", 310, ofGetHeight() - kMargin + 10);
-    undo_button.visible = true;
-    
-    save_button = SimpleButton("Save Game", 510, ofGetHeight() - kMargin + 10);
-    save_button.visible = true;
-    
-    replay_button = SimpleButton("Replay", 710, ofGetHeight() - kMargin + 10);
-    replay_button.visible = true;
-    
-    ai_button = SimpleButton("AI", 910, ofGetHeight() - kMargin + 10);
-    ai_button.visible = true;
-    
-    exit_button = SimpleButton("Exit", 1210, ofGetHeight() - kMargin + 10);
-    exit_button.visible = true;
-    
-    bgm.load("thegameison.mp3");
-    bgm.setLoop(true);
-    bgm.setVolume(0.1f);
-    bgm.play();
-    
-    clickSound.load("click.mp3");
-    
-    restartSound.load("restart.mp3");
-    restartSound.setVolume(0.3f);
-    
-    undoSound.load("undo.wav");
-    undoSound.setVolume(0.3f);
-    
-    saveSound.load("save.mp3");
-    saveSound.setVolume(0.3f);
-    
-    replaySound.load("replay.mp3");
-    replaySound.setVolume(0.3f);
-    
-    for (int i = 1; i <= kBoardSize; ++i) {
-        for (int j = 1; j <= kBoardSize; ++j) {
-            intersects.push_back(make_pair(kWidth * i, kHeight * j));
-        }
-    }
-    
-    gomoku = Gomoku();
-    
+    SetupUI();
+    SetupBoard();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
     int winner;
     if (!gomoku.IsGameEnd() && (winner = gomoku.GetWinner()) != kNoPlayer) {
-        // add sound here
         if(winner == kFirstPlayer) {
             ofSystemAlertDialog("Congrats to player 1, You win!!");
         } else {
             ofSystemAlertDialog("Congrats to player 2, You win!!");
         }
     }
-    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    // called every frame
-    
-    const double kWidth = ofGetWidth() / (kBoardSize + 1);
-    const double kHeight = (ofGetHeight() - kMargin) / (kBoardSize + 1);
-    
     ofFill();
     
     ofSetColor(255, 255, 255);
     menubackground.draw(0, 0, ofGetWidth(), ofGetHeight());
-    //ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
     
     ofSetColor(237, 189, 101);
     background.draw(0, 0, ofGetWidth(), ofGetHeight() - kMargin);
-    //ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight() - kMargin);
     
     ofSetColor(0, 0, 0);
     for(int i = 1; i <= kBoardSize; ++i) {
-        ofDrawLine(i * kWidth, 0, i * kWidth, ofGetHeight() - kMargin);
+        ofDrawLine(i * width, 0, i * width, ofGetHeight() - kMargin);
     }
     for(int i = 1; i <= kBoardSize; ++i) {
-        ofDrawLine(0, i * kHeight, ofGetWidth(), i * kHeight);
+        ofDrawLine(0, i * height, ofGetWidth(), i * height);
     }
     
     vector<int> moves = gomoku.GetMoves();
@@ -131,13 +63,17 @@ void ofApp::draw(){
     replay_button.draw();
     ai_button.draw();
     exit_button.draw();
+    show_matches_button.draw();
     
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    
-    // consider use back to implement "undo", etc. in play mode
+    if (key == 8 && gomoku.IsReplayMode()) { // backspace for undo
+        gomoku.Undo();
+        undoSound.play();
+        return;
+    }
     
     if (key == ' ' && gomoku.IsReplayMode()) {
         gomoku.NextReplayMove();
@@ -165,40 +101,28 @@ void ofApp::mouseDragged(int x, int y, int button){
 void ofApp::mousePressed(int x, int y, int button){
     
     const double kDistance = 30;
-    const double kWidth = ofGetWidth() / (kBoardSize + 1);
-    const double kHeight = (ofGetHeight() - kMargin) / (kBoardSize + 1);
     
+    // next move in replay mode
     if (y <= ofGetHeight() - kMargin && gomoku.IsReplayMode()) {
         gomoku.NextReplayMove();
         clickSound.play();
         return;
     }
     
+    // check whether a move is made
     vector<vector<int> > board = gomoku.GetBoard();
     for (int i = 0; i < intersects.size(); ++i) {
-        
         point intersect = intersects[i];
         
         if (sqrt((x - intersect.first) * (x - intersect.first)
                  + (y - intersect.second) * (y - intersect.second)) < kDistance
             && board[i % kBoardSize][i / kBoardSize] == kNoPlayer) {
-            gomoku.AddMove(i);
             
             clickSound.play();
+            gomoku.AddMove(i);
             
             if (ai_mode) {
-                update();
-                if (gomoku.IsGameEnd()) {
-                    return;
-                }
-                board = gomoku.GetBoard();
-                int move = gomoku_ai.Move(board);
-                if (move < 0 || move >= kBoardSize * kBoardSize) {
-                    ofSystemAlertDialog("Computer Resigned, You win!");
-                    gomoku.Clear();
-                } else {
-                    gomoku.AddMove(move);
-                }
+                GetAIMove();
             }
             
             return;
@@ -206,8 +130,10 @@ void ofApp::mousePressed(int x, int y, int button){
     
     }
     
+    // click the buttons
     if (restart_button.checkClick(x, y)) {
         restartSound.play();
+        ai_mode = false;
         gomoku.Clear();
     }
     
@@ -218,29 +144,24 @@ void ofApp::mousePressed(int x, int y, int button){
     
     if (save_button.checkClick(x, y)) {
         saveSound.play();
-        saveGame();
+        SaveGame();
     }
     
     if (ai_button.checkClick(x, y)) {
-        gomoku.Clear();
-        gomoku_ai = GomokuAI();
-        gomoku_ai.SetIsFirstPlayer(false);
-        ai_mode = true;
+        SetAIMode();
     }
     
     if (replay_button.checkClick(x, y)) {
         replaySound.play();
-        if (!gomoku.IsReplayMode()) {
-            replayGame();
-        } else {
-            gomoku = Gomoku();
-            replay_button = SimpleButton("Replay", 710, ofGetHeight() - kMargin + 10);
-            replay_button.visible = true;
-        }
+        SetReplayMode();
     }
     
     if (exit_button.checkClick(x, y)) {
         _Exit(0);
+    }
+    
+    if (show_matches_button.checkClick(x, y)) {
+        ShowPastMatches();
     }
     
 }
@@ -275,23 +196,139 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
-void ofApp::saveGame() {
+void ofApp::SetupUI() {
+    ofSetCircleResolution(100);
     
-    fout.open("savedgames.txt", ofFile::Append);
+    SetupBackground();
+    SetupButtons();
+    SetupSound();
+}
+
+void ofApp::SetupBackground() {
+    background.load("boardbackground.jpeg");
+    menubackground.load("menubackground.jpeg");
+}
+
+void ofApp::SetupButtons() {
+    restart_button = SimpleButton("Restart", 110, ofGetHeight() - kMargin + 10);
+    restart_button.visible = true;
     
-    // still need to ensure the name of a particular day is unique
+    undo_button = SimpleButton("Undo", 310, ofGetHeight() - kMargin + 10);
+    undo_button.visible = true;
+    
+    save_button = SimpleButton("Save Game", 510, ofGetHeight() - kMargin + 10);
+    save_button.visible = true;
+    
+    replay_button = SimpleButton("Replay", 710, ofGetHeight() - kMargin + 10);
+    replay_button.visible = true;
+    
+    ai_button = SimpleButton("AI", 910, ofGetHeight() - kMargin + 10);
+    ai_button.visible = true;
+    
+    exit_button = SimpleButton("Exit", 1210, ofGetHeight() - kMargin + 10);
+    exit_button.visible = true;
+    
+    show_matches_button = SimpleButton("Past Matches", 1410, ofGetHeight() - kMargin + 10);
+    show_matches_button.visible = true;
+}
+
+void ofApp::SetupSound() {
+    bgm.load("thegameison.mp3");
+    bgm.setLoop(true);
+    bgm.setVolume(0.1f);
+    bgm.play();
+    
+    clickSound.load("click.mp3");
+    
+    restartSound.load("restart.mp3");
+    restartSound.setVolume(0.3f);
+    
+    undoSound.load("undo.wav");
+    undoSound.setVolume(0.3f);
+    
+    saveSound.load("save.mp3");
+    saveSound.setVolume(0.3f);
+    
+    replaySound.load("replay.mp3");
+    replaySound.setVolume(0.3f);
+}
+
+void ofApp::SetupBoard() {
+    width = ofGetWidth() / (kBoardSize + 1);
+    height = (ofGetHeight() - kMargin) / (kBoardSize + 1);
+    
+    for (int i = 1; i <= kBoardSize; ++i) {
+        for (int j = 1; j <= kBoardSize; ++j) {
+            intersects.push_back(make_pair(width * i, height * j));
+        }
+    }
+}
+
+void ofApp::GetAIMove() {
+    update();
+    if (gomoku.IsGameEnd()) {
+        return;
+    }
+    
+    vector<vector<int> > board = gomoku.GetBoard();
+    int move = gomoku_ai.Move(board);
+    if (move < 0 || move >= kBoardSize * kBoardSize) {
+        ofSystemAlertDialog("Computer Resigned, You win!");
+        gomoku.Clear();
+    } else {
+        clickSound.play();
+        gomoku.AddMove(move);
+    }
+}
+
+void ofApp::SetAIMode() {
+    gomoku.Clear();
+    gomoku_ai = GomokuAI();
+    bool is_ai_first_player = ofSystemTextBoxDialog("Do you want to go first(y/n)", "y") != "y";
+    gomoku_ai.SetIsFirstPlayer(is_ai_first_player);
+    ai_mode = true;
+    if (is_ai_first_player) {
+        vector<vector<int> > board = gomoku.GetBoard();
+        gomoku.AddMove(gomoku_ai.Move(board));
+    }
+}
+
+void ofApp::SaveGame() {
+    
+    fout.open(kSavedGames, ofFile::Append);
+    
     string match_name = ofSystemTextBoxDialog("Please enter a name for your match", "untitled");
-    gomoku.SaveMatch(fout, match_name);
+    
+    // weird that you cannot copy fout to anther function
+    // otherwise it would open a read-only copy
+    //gomoku.SaveMatch(fout, match_name);
+    
+    fout << ofGetYear() << ofGetMonth() << ofGetDay() << ' ';
+    fout << match_name << ' ';
+    for (int move: gomoku.GetMoves()) {
+        fout << move << ' ';
+    }
+    fout << endl;
     
     fout.close();
 }
 
-void ofApp::replayGame() {
+void ofApp::SetReplayMode() {
+    if (!gomoku.IsReplayMode()) {
+        ReplayGame();
+    } else {
+        gomoku = Gomoku();
+        replay_button = SimpleButton("Replay", 710, ofGetHeight() - kMargin + 10);
+        replay_button.visible = true;
+    }
+}
+
+void ofApp::ReplayGame() {
     
     string replay_date = ofSystemTextBoxDialog("Please enter the date of game you'd like to replay (yyyymmdd)");
     string replay_name = ofSystemTextBoxDialog("Please enter the name of game you'd like to replay");
     
-    fin.open("savedgames.txt", ofFile::ReadOnly);
+    fin.open(kSavedGames, ofFile::ReadOnly);
     
     gomoku.SetReplayMode(fin, replay_date, replay_name);
         
@@ -300,4 +337,22 @@ void ofApp::replayGame() {
     }
     
     fin.close();
+}
+
+void ofApp::ShowPastMatches() {
+    string past_matches = "";
+    
+    fin.open(kSavedGames, ofFile::ReadOnly);
+    
+    string past_match;
+    while (getline(fin, past_match)) {
+        past_matches += gomoku.LineToVector(past_match)[0];
+        past_matches += " ";
+        past_matches += gomoku.LineToVector(past_match)[1];
+        past_matches += "\n";
+    }
+    
+    fin.close();
+    
+    ofSystemAlertDialog(past_matches);
 }

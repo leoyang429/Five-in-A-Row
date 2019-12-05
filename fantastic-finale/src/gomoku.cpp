@@ -47,9 +47,6 @@ void Gomoku::Undo() {
 
 int Gomoku::GetWinner() {
     
-    // it has been proved that the first player can always win even with balance breakers
-    // http://www.sze.hu/~gtakacs/download/wagnervirag_2001.pdf
-    
     for (int i = 0; i < kBoardSize; ++i) {
         for (int j = 0; j < kBoardSize; ++j) {
             if (board[i][j] != kNoPlayer) {

@@ -13,6 +13,7 @@ GomokuAI::GomokuAI() {
     
     is_first_player = false;
     is_empty_board = is_first_player;
+    
 }
 
 ll GomokuAI::RandomUnsignedLL()
@@ -25,7 +26,7 @@ void GomokuAI::SetIsFirstPlayer(bool is_first_player) {
     is_empty_board = this->is_first_player = is_first_player;
 }
 
-int GomokuAI::GetScore(const vector<vector<int> >& board, int player) {
+int GomokuAI::GetScore(const vector<vector<int> >& board, int player, bool is_enemy_next) {
     
     int score = 10;
     int consecutives[kBoardSize][kBoardSize] = {0};
@@ -89,23 +90,13 @@ int GomokuAI::GetScore(const vector<vector<int> >& board, int player) {
                     if (consecutive >= 4 && skipped_one_intersect) {
                         consecutive = first_half_consecutive;
                     }
-                    /*
-                    if (consecutive == 4) {
-                        return kWinningScore;
-                    }
-                    
-                    while (x != i || y != j) {
-                        x -= kXChange[k];
-                        y -= kYChange[k];
-                        if (consecutives[x][y] >= 3 && consecutive >= 3) {
-                            //return kWinningScore;
-                            score += kConsecutiveScore[4];
-                        }
-                        consecutives[x][y] = max(consecutives[x][y], consecutive);
-                    }*/
                     
                     if (consecutive >= 0) {
-                        score += kConsecutiveScore[consecutive];
+                        if (is_enemy_next) {
+                            score += kConsecutiveScore[consecutive];
+                        } else {
+                            score += kEnemyConsecutiveScore[consecutive];
+                        }
                     }
                     
                 }
@@ -136,9 +127,7 @@ int GomokuAI::Move(vector<vector<int> >& board) {
         return kBoardSize * kBoardSize / 2;
     }
     
-    // try search 5 steps
-    
-    //GetHash(board);
+    int hash_code = GetHash(board);
     
     vector<int> possible_moves = GetPossibleMoves(board);
     
@@ -156,18 +145,35 @@ int GomokuAI::Move(vector<vector<int> >& board) {
         board[x][y] = kNoPlayer;
     }
     
-    return best_move;
+    return model[hash_code] = best_move;
 }
 
 int GomokuAI::Minimax(vector<vector<int> >& board, int depth, int alpha_beta) {
     
-    if (depth == kMaxSearchDepth || GetScore(board, 1) == kWinningScore || GetScore(board, 2) == kWinningScore) {
-        return GetScore(board, 2 - is_first_player) - 1.5 * GetScore(board, 2 - !is_first_player);
+    if (HasWon(board, (depth & 1) ? 2 - !is_first_player : 2 - is_first_player)) {
+        return 2 * pow(-1, (depth & 1)) * kWinningScore;
+    }
+    
+    if (depth == kMaxSearchDepth) {
+        return GetScore(board, 2 - is_first_player, true) - GetScore(board, 2 - !is_first_player, false);
     }
     
     if (depth & 1) {
         
-        vector<int> possible_moves = GetPossibleMoves(board);
+        vector<int> potential_moves = GetPossibleMoves(board);
+        vector<int> possible_moves;
+        
+        priority_queue<pair<int, int> > pq;
+        for (int move: potential_moves) {
+            int x = move % kBoardSize, y = move / kBoardSize;
+            board[x][y]=2-is_first_player;
+            pq.push(make_pair(GetScore(board, 2-is_first_player, true)-GetScore(board, 2-!is_first_player, false), move));
+            board[x][y]=kNoPlayer;
+        }
+        while(!pq.empty()){
+            possible_moves.push_back(pq.top().second);
+            pq.pop();
+        }
         
         int highest_score = -kWinningScore;
         
@@ -189,7 +195,20 @@ int GomokuAI::Minimax(vector<vector<int> >& board, int depth, int alpha_beta) {
         
     } else {
         
-        vector<int> possible_moves = GetPossibleMoves(board);
+        vector<int> potential_moves = GetPossibleMoves(board);
+        vector<int> possible_moves;
+        
+        priority_queue<pair<int, int> > pq;
+        for (int move: potential_moves) {
+            int x = move % kBoardSize, y = move / kBoardSize;
+            board[x][y]=2-!is_first_player;
+            pq.push(make_pair(GetScore(board, 2-!is_first_player, true)-GetScore(board, 2-is_first_player, false), move));
+            board[x][y]=kNoPlayer;
+        }
+        while(!pq.empty()){
+            possible_moves.push_back(pq.top().second);
+            pq.pop();
+        }
         
         int lowest_score = kWinningScore;
         
@@ -237,4 +256,42 @@ vector<int> GomokuAI::GetPossibleMoves(vector<vector<int> >& board) {
     }
     
     return possible_moves;
+}
+
+int GomokuAI::HasWon(const vector<vector<int> >& board, int player) {
+    for (int i = 0; i < kBoardSize; ++i) {
+        for (int j = 0; j < kBoardSize; ++j) {
+            if (board[i][j] == player) {
+                for (int k = 0; k < kDirections; ++k) {
+                    
+                    int previous_x = i - kXChange[k], previous_y = j - kYChange[k];
+                    if (previous_x >= 0 && previous_x < kBoardSize && previous_y >= 0 && previous_y < kBoardSize
+                        && board[previous_x][previous_y] == player) {
+                        continue;
+                    }
+                    
+                    int consecutive = 1;
+                    int x = i, y = j;
+                    
+                    while(consecutive <= kBoardSize) {
+                        x += kXChange[k];
+                        y += kYChange[k];
+                        if (x < 0 || y < 0 || x >= kBoardSize || y >= kBoardSize) {
+                            break;
+                        }
+                        if (board[x][y] != player) {
+                            break;
+                        }
+                        ++ consecutive;
+                    }
+                    
+                    if (consecutive >= 5) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    
+    return false;
 }
