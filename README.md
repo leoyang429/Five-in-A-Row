@@ -8,6 +8,5 @@ Install Xcode and openframeworks, and import this project into Xcode.
 
 ## Usage
 
-Run the fantastic-finale Release scheme in Xcode and you could see the UI as follows.
-/Users/leo/Desktop/Screen Shot 2019-12-11 at 3.00.10 PM.png
+Run the fantastic-finale Release scheme in Xcode and you could see the UI.
 Click on the intersects to make a move and click the buttons to switch modes.
