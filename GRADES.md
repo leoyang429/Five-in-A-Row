@@ -1,5 +1,36 @@
-# fantastic-finale-leoyang429
+# fantastic-finale-leoyang429 12/5
 fantastic-finale-leoyang429 created by GitHub Classroom
+
+## Project Progress (40%)
+ - An appropriate amount of progress was made, including any time needed to set up external libraries  
+ 40/40
+ 
+## Development Quality (40%)
+ - Good Git history, with regular commits and quality commit messages
+ - Appropriate amount of testing during development (either automatic unit tests or manual testing)
+ - Good code and object decomposition; functions and classes are appropriately sized
+ - Good layout, code organization, and naming
+ - Appropriate usage and integration of external libraries
+ - Follows proper, idiomatic C++ style
+ 36/40
+ See issues for opportunities to clean up code.
+ 
+## Documentation (10%)
+ - PROPOSAL.md is up-to-date with the most recent approval
+ - DEVELOPMENT.md shows a timeline of the work done  
+ 10/10
+ 
+## Presentation and Participation (10%)
+ - Arrived on time with all necessary materials and ready to go
+ - Appropriate pacing and engagement of the fellow students
+ - Engaged and paying attention to other students presentations
+ - Asks questions and/or makes comments that further the discussion
+ - Explains reasoning for why something is good or bad
+ - Behaves respectfully to moderator and other students  
+ 10/10
+ 
+ 96/100
+
 
 
 # fantastic-finale-leoyang429
