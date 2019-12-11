@@ -76,37 +76,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     
-    const double kDistance = 30;
-    
-    // next move in replay mode
-    if (y <= ofGetHeight() - kMargin && gomoku.IsReplayMode()) {
-        gomoku.NextReplayMove();
-        clickSound.play();
-        return;
+    if (gomoku.IsReplayMode()) {
+        NextMoveReplay(x, y);
+    } else {
+        NextMovePlay(x, y);
     }
-    
-    // check whether a move is made
-    vector<vector<int> > board = gomoku.GetBoard();
-    for (int i = 0; i < intersects.size(); ++i) {
-        point intersect = intersects[i];
-        
-        if (sqrt((x - intersect.first) * (x - intersect.first)
-                 + (y - intersect.second) * (y - intersect.second)) < kDistance
-            && board[i % kBoardSize][i / kBoardSize] == kNoPlayer) {
-            
-            clickSound.play();
-            gomoku.AddMove(i);
-            
-            if (ai_mode) {
-                GetAIMove();
-            }
-            
-            return;
-        }
-    
-    }
-    
-    // click the buttons
+
     if (restart_button.checkClick(x, y)) {
         restartSound.play();
         ai_mode = false;
@@ -184,7 +159,7 @@ void ofApp::SetupUI() {
 
 void ofApp::SetupBackground() {
     background.load("boardbackground.jpeg");
-    menubackground.load("menubackground.jpeg");
+    menubackground.load("Menu-Background.jpg");
 }
 
 void ofApp::SetupButtons() {
@@ -289,6 +264,35 @@ void ofApp::DrawStones() {
     }
 }
 
+void ofApp::NextMoveReplay(int x, int y) {
+    if (y <= ofGetHeight() - kMargin) {
+        gomoku.NextReplayMove();
+        clickSound.play();
+    }
+}
+
+void ofApp::NextMovePlay(int x, int y) {
+    const double kDistance = 30;
+    
+    vector<vector<int> > board = gomoku.GetBoard();
+    for (int i = 0; i < intersects.size(); ++i) {
+        point intersect = intersects[i];
+        
+        if (sqrt((x - intersect.first) * (x - intersect.first)
+                 + (y - intersect.second) * (y - intersect.second)) < kDistance
+            && board[i % kBoardSize][i / kBoardSize] == kNoPlayer) {
+            
+            clickSound.play();
+            gomoku.AddMove(i);
+            
+            if (ai_mode) {
+                GetAIMove();
+            }
+        }
+    
+    }
+}
+
 void ofApp::GetAIMove() {
     update();
     if (gomoku.IsGameEnd()) {
@@ -312,6 +316,7 @@ void ofApp::SetAIMode() {
     bool is_ai_first_player = ofSystemTextBoxDialog("Do you want to go first(y/n)", "y") != "y";
     gomoku_ai.SetIsFirstPlayer(is_ai_first_player);
     ai_mode = true;
+    gomoku.SetReplay(false);
     if (is_ai_first_player) {
         vector<vector<int> > board = gomoku.GetBoard();
         gomoku.AddMove(gomoku_ai.Move(board));

@@ -42,7 +42,10 @@ class ofApp : public ofBaseApp{
         void DrawBoard();
         void DrawButtons();
         void DrawStones();
-        
+    
+        void NextMoveReplay(int x, int y);
+        void NextMovePlay(int x, int y);
+    
         void GetAIMove();
         void SetAIMode();
         void SetReplayMode();

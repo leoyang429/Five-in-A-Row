@@ -41,6 +41,7 @@ public:
     void SaveMatch(ofFile fout, std::string match_name);
     void SwitchPlayer();
     bool IsReplayMode();
+    void SetReplay(bool replay_mode);
     bool IsGameEnd();
     std::vector<std::string> LineToVector(string line);
     

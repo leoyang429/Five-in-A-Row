@@ -42,3 +42,8 @@
   - Added unit tests for Gomoku class as mentioned on Nov. 25
   - Refactored Gomoku class so that it doesn't depend on openframeworks cpps which complicate the compile process for testing target
   - The final project is mostly done; still need to add ReadMe file
+  
+- **12/11/19** Added Readme File
+ -  Cleaned up code according to issues on Dec. 6
+ -  Changed the menu background picture
+ -  Added a Readme File

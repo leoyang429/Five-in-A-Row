@@ -134,6 +134,10 @@ bool Gomoku::IsReplayMode() {
     return replay_mode;
 }
 
+void Gomoku::SetReplay(bool replay_mode) {
+    this->replay_mode = replay_mode;
+}
+
 vector<string> Gomoku::LineToVector(string line) {
     vector<string> vec;
     istringstream input_string_stream(line);

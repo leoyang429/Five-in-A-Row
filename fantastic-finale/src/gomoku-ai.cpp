@@ -154,6 +154,7 @@ int GomokuAI::Move(vector<vector<int> >& board) {
     return model[hash_code] = best_move;
 }
 
+// refer to https://en.wikipedia.org/wiki/Minimax
 int GomokuAI::Minimax(vector<vector<int> >& board, int depth, int alpha_beta) {
     
     if (HasWon(board, (depth & 1) ? 2 - !is_first_player : 2 - is_first_player)) {
