@@ -1,18 +1,18 @@
 # Fantastic Finale
 
-This project provides a UI for [five-in-a-row](https://en.wikipedia.org/wiki/Gomoku) games. Players can either play against each other or challenge a built-in AI. Matches can be saved and replayed later.
+This project provides a UI for [five-in-a-row](https://en.wikipedia.org/wiki/Gomoku) games. 
+
+Players can either play against each other or challenge a built-in AI. Matches can be saved and replayed later.
 
 ## Installation
 
-This project is for MacOS only. Install [Xcode](https://developer.apple.com/xcode/) and [openframeworks](https://openframeworks.cc). Download this project in Zip, open the Prjoect Generator, and import "fantastic-finale" folder. Then you can open the project in Xcode.
+This project is for MacOS only. Install [Xcode](https://developer.apple.com/xcode/) and [openframeworks](https://openframeworks.cc). Download this project in Zip, open the Prjoect Generator, and import "fantastic-finale" folder. Then you can open the project in Xcode. Run the fantastic-finale Release scheme in Xcode and you could see the UI.
 
 ## Usage
 
-Run the fantastic-finale Release scheme in Xcode and you could see the UI. \n
-Click on the intersects to make a move and click the buttons to switch modes.
+Click on the intersects to make a move and click the buttons to switch between modes.
 
-## Buttons
-
+List of Buttons:
  - Restart - reset the board, and quit AI mode
  - Undo - undo the last move
  - Save - save the current match, and you'll be asked to specify a name for this match
@@ -20,3 +20,4 @@ Click on the intersects to make a move and click the buttons to switch modes.
  - AI - play against AI, and you can choose to go first or not
  - Exit - exit the game
  - Show Matches - list all the dates and names of recorded matches, in case you forget them
+
