@@ -12,9 +12,11 @@ Install [Xcode](https://developer.apple.com/xcode/) and [openframeworks](https:/
 
 ## Usage
 
-Click on the intersects to make a move and click the buttons to switch between modes.
+The game is automatically at play mode upon entering - that is, two human players play agianst each other. Click on the intersects to make a move.
 
-List of Buttons:
+Click the buttons to switch between modes.
+
+Functions of Buttons:
  - Restart - reset the board, and quit AI mode
  - Undo - undo the last move
  - Save - save the current match, and you'll be asked to specify a name for this match
@@ -23,4 +25,4 @@ List of Buttons:
  - Exit - exit the game
  - Show Matches - list all the dates and names of recorded matches, in case you forget them
 
-You may also press space for the next move and backspace for previous move in replay mode.
+For replay mode, click any where on the board to see the next move. You may also press space for the next move and backspace for previous move in replay mode.
