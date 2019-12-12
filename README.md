@@ -6,7 +6,9 @@ Players can either play against each other or challenge a built-in AI. Matches c
 
 ## Installation
 
-This project is for MacOS only. Install [Xcode](https://developer.apple.com/xcode/) and [openframeworks](https://openframeworks.cc). Download this project in Zip, open the Prjoect Generator, and import "fantastic-finale" folder. Then you can open the project in Xcode. Run the fantastic-finale Release scheme in Xcode and you could see the UI.
+This project is for MacOS only. 
+
+Install [Xcode](https://developer.apple.com/xcode/) and [openframeworks](https://openframeworks.cc). Download this project in Zip, open the Prjoect Generator, and import "fantastic-finale" folder. Then you can open the project in Xcode. Run the fantastic-finale Release scheme in Xcode and you could see the UI.
 
 ## Usage
 
@@ -21,3 +23,4 @@ List of Buttons:
  - Exit - exit the game
  - Show Matches - list all the dates and names of recorded matches, in case you forget them
 
+You may also press space for the next move and backspace for previous move in replay mode.
