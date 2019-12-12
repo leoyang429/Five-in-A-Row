@@ -44,6 +44,6 @@
   - The final project is mostly done; still need to add ReadMe file
   
 - **12/11/19** Added Readme File
- -  Cleaned up code according to issues on Dec. 6
- -  Changed the menu background picture
- -  Added a Readme File
+  -  Cleaned up code according to issues on Dec. 6
+  -  Changed the menu background picture
+  -  Added a Readme File
