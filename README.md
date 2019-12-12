@@ -8,7 +8,7 @@ This project is for MacOS only. Install [Xcode](https://developer.apple.com/xcod
 
 ## Usage
 
-Run the fantastic-finale Release scheme in Xcode and you could see the UI.
+Run the fantastic-finale Release scheme in Xcode and you could see the UI. \n
 Click on the intersects to make a move and click the buttons to switch modes.
 
 ## Buttons
