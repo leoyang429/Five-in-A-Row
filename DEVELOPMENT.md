@@ -46,4 +46,5 @@
 - **12/11/19** Added Readme File
   -  Cleaned up code according to issues on Dec. 6
   -  Changed the menu background picture
-  -  Added a Readme File
+  -  Uploaded images and soundtracks to git
+  -  Added Readme File
