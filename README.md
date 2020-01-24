@@ -21,10 +21,10 @@ Click the buttons to switch between modes.
 Functions of Buttons:
  - Restart - reset the board, and quit AI mode
  - Undo - undo the last move
- - Save - save the current match, and you'll be asked to specify a name for this match
- - Replay - you'll be asked to provide the date and name of a match, and then you'll enter replay mode for this game
- - AI - play against AI, and you can choose to go first or not
+ - Save - save the current match by specifying a name for this match
+ - Replay - search a saved game by its date and name, and then enter replay mode for this game
+ - AI - play against AI, can choose play first or not
  - Exit - exit the game
- - Show Matches - list all the dates and names of recorded matches, in case you forget them
+ - Show Matches - list all the dates and names of recorded matches
 
 For replay mode, click anywhere on the board to see the next move. You may also press space for the next move and backspace for previous move in replay mode.
