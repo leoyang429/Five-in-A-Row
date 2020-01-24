@@ -1,4 +1,4 @@
-# Fantastic Finale
+# Five in A Row
 
 This project provides a UI for [five-in-a-row](https://en.wikipedia.org/wiki/Gomoku) games. 
 
