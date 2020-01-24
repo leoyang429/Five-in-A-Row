@@ -6,7 +6,7 @@ Players can either play against each other or challenge a built-in AI. Matches c
 
 ## Installation
 
-This project is for MacOS only. 
+This project works on MacOS. 
 
 Install [Xcode](https://developer.apple.com/xcode/) and [openframeworks](https://openframeworks.cc). Download this project in Zip, open the Prjoect Generator, and import "fantastic-finale" folder. Then you can open the project in Xcode. Run the fantastic-finale Release scheme in Xcode and you could see the UI as follows.
 
