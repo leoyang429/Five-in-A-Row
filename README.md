@@ -14,7 +14,7 @@ Install [Xcode](https://developer.apple.com/xcode/) and [openframeworks](https:/
 
 ## Usage
 
-The game is automatically set at play mode upon entering - that is, two human players play agianst each other. Click on the intersects to make a move.
+The game is at play mode upon entering - that is, two human players play agianst each other. Click on the intersects to make a move.
 
 Click the buttons to switch between modes.
 
